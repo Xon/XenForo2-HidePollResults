@@ -1,6 +1,0 @@
-{
-    "from_class": "XenForo\\Pub\\Controller\\Forum",
-    "to_class": "SV\\HidePollResults\\XenForo\\Pub\\Controller\\Forum",
-    "execute_order": 10,
-    "active": true
-}

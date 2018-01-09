@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Repository\\Poll",
+    "to_class": "SV\\HidePollResults\\XF\\Repository\\Poll",
+    "execute_order": 10,
+    "active": true
+}
