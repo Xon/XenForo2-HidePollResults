@@ -1,0 +1,9 @@
+{
+    "template": "helper_poll_create",
+    "description": "Adds the hide controls to the helper_poll_create form",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<ul id=\"ctrl_poll_close_Disabler\">(.*?<\\/ul>)/is",
+    "replace": "$0\n<xen:include template=\"hide_poll_results_thread_create\" />"
+}

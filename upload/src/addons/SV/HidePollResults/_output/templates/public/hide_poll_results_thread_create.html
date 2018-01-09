@@ -1,0 +1,13 @@
+<xen:if is="{$visitor.permissions.forum.hidePollResults}">
+	<li><label for="ctrl_poll_hide_results"><input type="checkbox" name="hide_results" value="1" class="Disabler" id="ctrl_poll_hide_results"{xen:checked $poll.hide_results} /> {xen:phrase hide_poll_results}</label>
+		<ul id="ctrl_poll_hide_results_Disabler">
+			<li>
+				<label for="ctrl_poll_hide_until_close"><input type="checkbox" name="until_close" value="1" id="ctrl_poll_hide_until_close"{xen:checked $poll.until_close} /> {xen:phrase hide_until_close}</label>
+				<p class="explain">
+					{xen:phrase results_will_be_hidden_until_poll_closes_explain}
+				</p>
+			</li>
+		</ul>
+	</li>
+	<input type="hidden" name="hide_poll_results_form" value="1" />
+</xen:if>

@@ -1,0 +1,9 @@
+{
+    "template": "poll_block_vote",
+    "description": "Hides the view results buttons from the poll block vote form.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<input type=\"button\"(.*?)<\\/noscript>/is",
+    "replace": "<xen:if is=\"{$canViewPollResults}\">\n$0\n</xen:if>"
+}

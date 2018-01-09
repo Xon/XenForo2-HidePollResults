@@ -1,0 +1,14 @@
+{
+    "XenForo-Entity-Poll_SV-HidePollResults-XenForo-Entity-Poll.json": {
+        "hash": "99ef9af83a0b06dbe98c77a27b27069a"
+    },
+    "XenForo-Pub-Controller-Forum_SV-HidePollResults-XenForo-Pub-Controller-Forum.json": {
+        "hash": "1331eb729efdd1545775362292635052"
+    },
+    "XenForo-Pub-Controller-Thread_SV-HidePollResults-XenForo-Pub-Controller-Thread.json": {
+        "hash": "34a4d0d5d1d22e92ea92d0ce4ec85106"
+    },
+    "XenForo-Repository-Poll_SV-HidePollResults-XenForo-Repository-Poll.json": {
+        "hash": "f0883192755fe03cc1b4eb5269abd1a2"
+    }
+}

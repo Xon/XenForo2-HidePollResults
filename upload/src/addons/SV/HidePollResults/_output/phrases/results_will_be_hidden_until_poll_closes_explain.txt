@@ -1,0 +1,1 @@
+If the above checkbox is checked then the results of this poll will remain hidden until the poll closes. If the poll does not have a close date or the above checkbox is unchecked then the results will be hidden until the poll is edited and the checkboxes unchecked.

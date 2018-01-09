@@ -1,0 +1,9 @@
+{
+    "template": "thread_poll_edit",
+    "description": "Adds the hide controls to the thread poll edit form",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<ul id=\"ctrl_close_Disabler\">(.*?<\\/ul>)/is",
+    "replace": "$0\n<xen:if is=\"!{$poll.close_date}\">\n\t<xen:include template=\"hide_poll_results_thread_create\" />\n</xen:if>"
+}
