@@ -34,43 +34,47 @@ use XF\Mvc\Entity\Structure;
  */
 class Poll extends XFCP_Poll
 {
-	public function canViewResults(&$error = null)
-	{
-		if (!$this->hide_results)
-		{
-			return parent::canViewResults($error);
-		}
+    public function canViewResults(&$error = null)
+    {
+        if (!$this->hide_results)
+        {
+            return parent::canViewResults($error);
+        }
 
-		if (
-			$this->hide_results &&
-			$this->until_close &&
+        if (
+            $this->hide_results &&
+            $this->until_close &&
             $this->isClosed()
-		){
-			return true;
-		}
+        )
+        {
+            return true;
+        }
 
-		if (\XF::visitor()->hasPermission('forum', 'bypassHiddenPollResults'))
-		{
-			return true;
-		}
+        if (\XF::visitor()->hasPermission('forum', 'bypassHiddenPollResults'))
+        {
+            return true;
+        }
 
-		if (
-			$this->Content->getValue('user_id') == \XF::visitor()->user_id &&
-			\XF::visitor()->hasPermission('forum', 'bypassHiddenPollResultOwn')
-		) {
-			return true;
-		}
+        if (
+            $this->Content->getValue('user_id') == \XF::visitor()->user_id &&
+            \XF::visitor()->hasPermission('forum', 'bypassHiddenPollResultOwn')
+        )
+        {
+            return true;
+        }
 
-		$error = null;
-		return false;
-	}
+        $error = null;
 
-	public static function getStructure(Structure $structure) {
-		$structure = parent::getStructure($structure);
+        return false;
+    }
 
-		$structure->columns['hide_results'] = ['type' => self::BOOL, 'default' => false];
-		$structure->columns['until_close'] = ['type' => self::BOOL, 'default' => false];
+    public static function getStructure(Structure $structure)
+    {
+        $structure = parent::getStructure($structure);
 
-		return $structure;
-	}
+        $structure->columns['hide_results'] = ['type' => self::BOOL, 'default' => false];
+        $structure->columns['until_close'] = ['type' => self::BOOL, 'default' => false];
+
+        return $structure;
+    }
 }
