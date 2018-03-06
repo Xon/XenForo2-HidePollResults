@@ -7,4 +7,6 @@ namespace SV\HidePollResults\XF\Pub\Controller;
  */
 class Thread extends XFCP_Thread
 {
+
+
 }

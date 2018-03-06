@@ -1,9 +1,0 @@
-{
-    "template": "poll_block",
-    "description": "Appends some information about poll closure",
-    "execution_order": 10,
-    "enabled": true,
-    "action": "str_replace",
-    "find": "<xen:if is=\"{$poll.canEdit}\"><a href=\"{xen:link threads/poll/edit, $thread}\" class=\"editLink\">{xen:phrase edit}</a></xen:if>",
-    "replace": "$0\n<xen:if is=\"{$poll.close_date} AND {$poll.hide_results} AND {$poll.until_close}\">\n\t<div class=\"pollNotes closeDate muted\">\n\t\t{xen:phrase the_results_of_this_poll_are_hidden_until_x, 'time={xen:helper datetimehtml, $poll.close_date}'}\n\t</div>\n<xen:elseif is=\"{$poll.hide_results}\" />\n\t<div class=\"pollNotes closeDate muted\">\n\t\t{xen:phrase the_results_of_this_poll_are_hidden_until_manual}\n\t</div>\n</xen:if>"
-}

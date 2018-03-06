@@ -1,26 +1,8 @@
 {
-    "public/HidePollResults_helper_poll_create_hide_controls.json": {
-        "hash": "66b816694f4017d755704671e0bd6b29"
+    "public/poll_extra_options_hide_poll_results.json": {
+        "hash": "056ba74b6c9535be4ec75d7504244803"
     },
-    "public/HidePollResults_poll_block_append_note.json": {
-        "hash": "04bbf1ce51e018d7753c00b71abca08e"
-    },
-    "public/HidePollResults_poll_block_result_hide_barCell.json": {
-        "hash": "fb6000baabb3f1c3365eba0a557378fb"
-    },
-    "public/HidePollResults_poll_block_result_hide_count.json": {
-        "hash": "15842688c6903b35390336c44627658e"
-    },
-    "public/HidePollResults_poll_block_result_hide_percentage.json": {
-        "hash": "3466146e3b0dd66dc6e78ae5bd6f7287"
-    },
-    "public/HidePollResults_poll_block_vote_hide_buttons.json": {
-        "hash": "801ce53c0d70737795f2499f804cbae4"
-    },
-    "public/HidePollResults_thread_poll_edit_hide_controls_1.json": {
-        "hash": "03413c31ae7c8ae61a560faf96411f70"
-    },
-    "public/HidePollResults_thread_poll_edit_hide_controls_2.json": {
-        "hash": "d7d55637f0f56604c2278e2a7e263f2f"
+    "public/thread_view_hidden_poll_results.json": {
+        "hash": "1d7fa2da76c26034e52d50a7fbe6c1d9"
     }
 }

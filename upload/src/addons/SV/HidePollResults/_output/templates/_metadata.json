@@ -1,12 +1,12 @@
 {
     "public/hide_poll_results_thread_create.html": {
-        "version_id": 2000000,
+        "version_id": 2000070,
         "version_string": "2.0.0",
-        "hash": "3dd962cd5fe69905c61dda1f99b6abef"
+        "hash": "bc84293d97c97d4a096008ca76f5e71d"
     },
     "public/thread_view_hidden_poll_results.html": {
-        "version_id": 2000000,
+        "version_id": 2000070,
         "version_string": "2.0.0",
-        "hash": "ddcdfad4ed5d073161983fae8ab64ea0"
+        "hash": "3e5ef536be26dbca9ac4243696dc5605"
     }
 }

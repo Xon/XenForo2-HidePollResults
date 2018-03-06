@@ -1,11 +1,12 @@
-<div class="overlayScroll pollResultsOverlay">
-	<table class="pollResults">
-		<tr>
-		<xen:if is="{$poll.close_date} AND {$poll.until_close}">
-			<p>{xen:phrase the_results_of_this_poll_are_hidden_until_x, 'time={xen:raw $closeDate}'}</p>
-		<xen:else />
-			<p>{xen:phrase the_results_of_this_poll_are_hidden_until_manual}</p>
-		</xen:if>
-		</tr>
-	</table>
+<div class="block-row block-row--minor">
+	<xf:if is="{$poll.close_date} AND {$poll.until_close}">
+		<p>{{ phrase(
+				'the_results_of_this_poll_are_hidden_until_x', {
+					'time':date($poll.close_date)
+				})
+			}}
+		</p>
+	<xf:else />
+		<p>{{ phrase('the_results_of_this_poll_are_hidden_until_manual') }}</p>
+	</xf:if>
 </div>

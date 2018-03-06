@@ -1,9 +1,0 @@
-{
-    "template": "thread_poll_edit",
-    "description": "Adds the hide controls to the thread poll edit form",
-    "execution_order": 10,
-    "enabled": true,
-    "action": "str_replace",
-    "find": "absolute}'}</label></li>",
-    "replace": "$0<xen:include template=\"hide_poll_results_thread_create\" />"
-}

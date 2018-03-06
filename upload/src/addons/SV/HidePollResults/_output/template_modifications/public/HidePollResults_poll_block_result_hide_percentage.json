@@ -1,9 +1,0 @@
-{
-    "template": "poll_block_result",
-    "description": "Hides the percentage",
-    "execution_order": 10,
-    "enabled": true,
-    "action": "preg_replace",
-    "find": "/<div class=\"percentage\">(.*?)<\\/div>/is",
-    "replace": "<xen:if is=\"{$canViewPollResults}\">\n$0\n</xen:if>"
-}
