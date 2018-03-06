@@ -9,6 +9,30 @@ use XF\Poll\AbstractHandler;
 
 class Poll extends XFCP_Poll
 {
+    public function actionCreate($contentType, Entity $content, array $breadcrumbs = [])
+    {
+        $reply = parent::actionCreate($contentType, $content, $breadcrumbs);
+
+        if ($reply instanceof View && $content instanceof Thread)
+        {
+            $reply->setParam('canHidePollResults', $content->canHidePollResults());
+        }
+
+        return $reply;
+    }
+
+    public function actionEdit($poll, array $breadcrumbs = [])
+    {
+        $reply = parent::actionEdit($poll, $breadcrumbs);
+
+        if ($reply instanceof View && $poll->Content instanceof Thread)
+        {
+            $reply->setParam('canHidePollResults', $poll->Content->canHidePollResults());
+        }
+
+        return $reply;
+    }
+
     public function setupPollCreate($contentType, Entity $content)
     {
         $creator = parent::setupPollCreate($contentType, $content);
