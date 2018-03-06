@@ -38,14 +38,13 @@ class Poll extends XFCP_Poll
 	{
 		if (!$this->hide_results)
 		{
-			return true;
+			return parent::canViewResults($error);
 		}
 
 		if (
 			$this->hide_results &&
-			$this->close_date &&
 			$this->until_close &&
-			($this['close_date'] < \XF::$time)
+            $this->isClosed()
 		){
 			return true;
 		}
