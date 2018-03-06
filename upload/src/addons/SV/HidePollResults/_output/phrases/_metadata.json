@@ -47,6 +47,12 @@
         "version_string": "1.0.0",
         "hash": "aaf9a5565b21007cf71fd5503d5ee1ef"
     },
+    "poll_hide_options.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "1f2a35a7131b350898aa4f0e009d3a58"
+    },
     "results_will_be_hidden_until_poll_closes_explain.txt": {
         "global_cache": false,
         "version_id": 1,

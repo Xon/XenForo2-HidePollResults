@@ -1,5 +1,8 @@
 {
     "XF-ControllerPlugin-Poll_SV-HidePollResults-XF-ControllerPlugin-Poll.json": {
         "hash": "884929134c0c3a5cdd24582c85333a12"
+    },
+    "XF-Entity-Poll_SV-HidePollResults-XF-Entity-Poll.json": {
+        "hash": "8c86e32107330acf7b638f26a51db8c0"
     }
 }
