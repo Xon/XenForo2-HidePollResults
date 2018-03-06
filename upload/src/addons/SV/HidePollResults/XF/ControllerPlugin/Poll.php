@@ -4,6 +4,7 @@ namespace SV\HidePollResults\XF\ControllerPlugin;
 
 use SV\HidePollResults\XF\Entity\Thread;
 use XF\Mvc\Entity\Entity;
+use XF\Mvc\Reply\View;
 use XF\Poll\AbstractHandler;
 
 class Poll extends XFCP_Poll
@@ -23,8 +24,8 @@ class Poll extends XFCP_Poll
                 ]);
             $creator->setOptions(
                 [
-                    'hide_results' => $pollInput['hide_results'],
-                    'until_close'  => $pollInput['until_close']
+                    'hide_results' => $pollInput['poll']['hide_results'],
+                    'until_close'  => $pollInput['poll']['until_close']
                 ]);
         }
 
@@ -46,8 +47,8 @@ class Poll extends XFCP_Poll
                 ]);
             $editor->setOptions(
                 [
-                    'hide_results' => $pollInput['hide_results'],
-                    'until_close'  => $pollInput['until_close']
+                    'hide_results' => $pollInput['poll']['hide_results'],
+                    'until_close'  => $pollInput['poll']['until_close']
                 ]);
         }
 
