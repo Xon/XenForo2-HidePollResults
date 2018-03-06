@@ -2,68 +2,70 @@
 
 namespace SV\HidePollResults\XF\ControllerPlugin;
 
+use SV\HidePollResults\XF\Entity\Thread;
 use XF\Mvc\Entity\Entity;
+use XF\Poll\AbstractHandler;
 
 class Poll extends XFCP_Poll
 {
-
-    public function getPollInput()
-    {
-        $upstream = parent::getPollInput();
-
-        if ($this->pollHideFormPresent())
-        {
-            $input = $this->filter([
-                                       'poll' => [
-                                           'hide_results' => 'bool',
-                                           'until_close'  => 'bool',
-                                       ]
-                                   ]);
-
-            return array_merge($input['poll'], $upstream);
-        }
-        else
-        {
-            return $upstream;
-        }
-    }
-
     public function setupPollCreate($contentType, Entity $content)
     {
         $creator = parent::setupPollCreate($contentType, $content);
 
-        $pollInput = $this->getPollInput();
-
-        if ($this->pollHideFormPresent())
+        if ($this->pollHideFormPresent($content))
         {
-            $creator->setOptions([
-                                     'hide_results' => $pollInput['hide_results'],
-                                     'until_close'  => $pollInput['until_close']
-                                 ]);
+            $pollInput = $this->filter(
+                [
+                    'poll' => [
+                        'hide_results' => 'bool',
+                        'until_close'  => 'bool',
+                    ]
+                ]);
+            $creator->setOptions(
+                [
+                    'hide_results' => $pollInput['hide_results'],
+                    'until_close'  => $pollInput['until_close']
+                ]);
         }
 
         return $creator;
     }
 
-    public function setupPollEdit(\XF\Entity\Poll $poll, $contentType, Entity $content, \XF\Poll\AbstractHandler $handler)
+    public function setupPollEdit(\XF\Entity\Poll $poll, $contentType, Entity $content, AbstractHandler $handler)
     {
         $editor = parent::setupPollEdit($poll, $contentType, $content, $handler);
 
-        $pollInput = $this->getPollInput();
-
-        if ($this->pollHideFormPresent())
+        if ($this->pollHideFormPresent($content))
         {
-            $editor->setOptions([
-                                    'hide_results' => $pollInput['hide_results'],
-                                    'until_close'  => $pollInput['until_close']
-                                ]);
+            $pollInput = $this->filter(
+                [
+                    'poll' => [
+                        'hide_results' => 'bool',
+                        'until_close'  => 'bool',
+                    ]
+                ]);
+            $editor->setOptions(
+                [
+                    'hide_results' => $pollInput['hide_results'],
+                    'until_close'  => $pollInput['until_close']
+                ]);
         }
 
         return $editor;
     }
 
-    protected function pollHideFormPresent()
+    /**
+     * @param Entity $content
+     * @return array|null
+     */
+    protected function pollHideFormPresent(Entity $content)
     {
-        return $this->filter(['poll' => ['hide_poll_results_form' => 'uint']])['poll']['hide_poll_results_form'];
+        if ($content instanceof Thread &&
+            $content->canHidePollResults())
+        {
+            return $this->filter(['poll' => ['hide_poll_results_form' => 'uint']])['poll']['hide_poll_results_form'];
+        }
+
+        return null;
     }
 }
