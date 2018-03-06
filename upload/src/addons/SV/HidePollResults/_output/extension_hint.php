@@ -11,4 +11,5 @@ namespace SV\HidePollResults\XF\ControllerPlugin
 namespace SV\HidePollResults\XF\Entity
 {
 	class XFCP_Poll extends \XF\Entity\Poll {}
+	class XFCP_Thread extends \XF\Entity\Thread {}
 }

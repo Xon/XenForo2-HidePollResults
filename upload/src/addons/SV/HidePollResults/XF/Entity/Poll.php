@@ -5,6 +5,7 @@ namespace SV\HidePollResults\XF\Entity;
 /*
  * Extends \XF\Entity\Poll
  */
+use XF\Entity\Thread;
 use XF\Mvc\Entity\Entity;
 use XF\Mvc\Entity\Structure;
 
@@ -36,7 +37,8 @@ class Poll extends XFCP_Poll
 {
     public function canViewResults(&$error = null)
     {
-        if (!$this->hide_results)
+        if (!$this->hide_results ||
+            !($this->Content instanceof Thread))
         {
             return parent::canViewResults($error);
         }
@@ -50,14 +52,18 @@ class Poll extends XFCP_Poll
             return true;
         }
 
-        if (\XF::visitor()->hasPermission('forum', 'bypassHiddenPollResults'))
+        $visitor = \XF::visitor();
+        /** @var Thread $thread */
+        $thread = $this->Content;
+
+        if ($visitor->hasNodePermission($thread->node_id, 'bypassHiddenPollResults'))
         {
             return true;
         }
 
-        if (
-            $this->Content->getValue('user_id') == \XF::visitor()->user_id &&
-            \XF::visitor()->hasPermission('forum', 'bypassHiddenPollResultOwn')
+        if ($thread->user_id &&
+            $thread->user_id === $visitor->user_id &&
+            $visitor->hasNodePermission($thread->node_id, 'bypassHiddenPollResultOwn')
         )
         {
             return true;
