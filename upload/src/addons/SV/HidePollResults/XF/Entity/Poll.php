@@ -2,14 +2,12 @@
 
 namespace SV\HidePollResults\XF\Entity;
 
-/*
- * Extends \XF\Entity\Poll
- */
-use XF\Entity\Thread;
 use XF\Mvc\Entity\Entity;
 use XF\Mvc\Entity\Structure;
 
 /**
+ * Extends \XF\Entity\Poll
+ *
  * COLUMNS
  * @property int|null poll_id
  * @property string content_type
