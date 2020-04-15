@@ -9,6 +9,12 @@ use XF\Poll\AbstractHandler;
 
 class Poll extends XFCP_Poll
 {
+    /**
+     * @param string $contentType
+     * @param Entity $content
+     * @param array  $breadcrumbs
+     * @return \XF\Mvc\Reply\AbstractReply|\XF\Mvc\Reply\Error|\XF\Mvc\Reply\Redirect|View
+     */
     public function actionCreate($contentType, Entity $content, array $breadcrumbs = [])
     {
         $reply = parent::actionCreate($contentType, $content, $breadcrumbs);
@@ -21,6 +27,11 @@ class Poll extends XFCP_Poll
         return $reply;
     }
 
+    /**
+     * @param \XF\Entity\Poll $poll
+     * @param array $breadcrumbs
+     * @return \XF\Mvc\Reply\AbstractReply|\XF\Mvc\Reply\Error|\XF\Mvc\Reply\Redirect|View
+     */
     public function actionEdit($poll, array $breadcrumbs = [])
     {
         $reply = parent::actionEdit($poll, $breadcrumbs);
@@ -33,6 +44,11 @@ class Poll extends XFCP_Poll
         return $reply;
     }
 
+    /**
+     * @param string $contentType
+     * @param Entity $content
+     * @return \XF\Service\Poll\Creator
+     */
     public function setupPollCreate($contentType, Entity $content)
     {
         $creator = parent::setupPollCreate($contentType, $content);
@@ -54,6 +70,13 @@ class Poll extends XFCP_Poll
         return $creator;
     }
 
+    /**
+     * @param \XF\Entity\Poll $poll
+     * @param string          $contentType
+     * @param Entity          $content
+     * @param AbstractHandler $handler
+     * @return \XF\Service\Poll\Editor
+     */
     public function setupPollEdit(\XF\Entity\Poll $poll, $contentType, Entity $content, AbstractHandler $handler)
     {
         $editor = parent::setupPollEdit($poll, $contentType, $content, $handler);

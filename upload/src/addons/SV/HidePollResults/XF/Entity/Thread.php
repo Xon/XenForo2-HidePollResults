@@ -7,6 +7,9 @@ namespace SV\HidePollResults\XF\Entity;
  */
 class Thread extends XFCP_Thread
 {
+    /**
+     * @return bool
+     */
     public function canHidePollResults()
     {
         $visitor = \XF::visitor();

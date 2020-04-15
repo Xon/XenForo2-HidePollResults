@@ -49,6 +49,10 @@ class Poll extends XFCP_Poll
         return false;
     }
 
+    /**
+     * @param Structure $structure
+     * @return Structure
+     */
     public static function getStructure(Structure $structure)
     {
         $structure = parent::getStructure($structure);
