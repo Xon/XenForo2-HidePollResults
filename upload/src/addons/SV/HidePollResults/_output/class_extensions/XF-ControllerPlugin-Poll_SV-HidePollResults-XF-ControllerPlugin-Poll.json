@@ -1,6 +1,6 @@
 {
     "from_class": "XF\\ControllerPlugin\\Poll",
     "to_class": "SV\\HidePollResults\\XF\\ControllerPlugin\\Poll",
-    "execute_order": 10,
+    "execute_order": 6241,
     "active": true
 }
