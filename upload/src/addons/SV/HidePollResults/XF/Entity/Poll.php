@@ -9,43 +9,23 @@ use XF\Mvc\Entity\Structure;
  * Extends \XF\Entity\Poll
  *
  * COLUMNS
- * @property int|null poll_id
- * @property string content_type
- * @property int content_id
- * @property string question
- * @property array responses
- * @property int voter_count
- * @property bool public_votes
- * @property int max_votes
- * @property int close_date
- * @property bool change_vote
- * @property bool view_results_unvoted
  * @property bool hide_results
  * @property bool until_close
- *
- * GETTERS
- * @property \XF\Poll\AbstractHandler|null Handler
- * @property Entity|null Content
- *
- * RELATIONS
- * @property \XF\Entity\PollResponse[] Responses
- * @property \XF\Entity\PollVote[] Votes
  */
 class Poll extends XFCP_Poll
 {
+    /**
+     * @param string|null $error
+     * @return bool
+     */
     public function canViewResults(&$error = null)
     {
-        if (!$this->hide_results ||
-            !($this->Content instanceof Thread))
+        if (!$this->hide_results || !($this->Content instanceof Thread))
         {
             return parent::canViewResults($error);
         }
 
-        if (
-            $this->hide_results &&
-            $this->until_close &&
-            $this->isClosed()
-        )
+        if ($this->hide_results && $this->until_close && $this->isClosed())
         {
             return true;
         }
@@ -53,21 +33,19 @@ class Poll extends XFCP_Poll
         $visitor = \XF::visitor();
         /** @var Thread $thread */
         $thread = $this->Content;
+        $nodeId = $thread->node_id;
 
-        if ($visitor->hasNodePermission($thread->node_id, 'bypassHiddenPollResults'))
+        if ($visitor->hasNodePermission($nodeId, 'bypassHiddenPollResults'))
         {
             return true;
         }
 
-        if ($thread->user_id &&
-            $thread->user_id === $visitor->user_id &&
-            $visitor->hasNodePermission($thread->node_id, 'bypassHiddenPollResultOwn')
-        )
+        $userId = $thread->user_id;
+        if ($userId && $userId === $visitor->user_id &&
+            $visitor->hasNodePermission($nodeId, 'bypassHiddenPollResultOwn'))
         {
             return true;
         }
-
-        $error = null;
 
         return false;
     }
