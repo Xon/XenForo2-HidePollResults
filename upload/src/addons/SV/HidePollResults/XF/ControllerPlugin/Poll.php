@@ -39,18 +39,16 @@ class Poll extends XFCP_Poll
 
         if ($this->pollHideFormPresent($content))
         {
-            $pollInput = $this->filter(
-                [
-                    'poll' => [
-                        'hide_results' => 'bool',
-                        'until_close'  => 'bool',
-                    ]
-                ]);
-            $creator->setOptions(
-                [
-                    'hide_results' => $pollInput['poll']['hide_results'],
-                    'until_close'  => $pollInput['poll']['until_close']
-                ]);
+            $pollInput = $this->filter([
+                'poll' => [
+                    'hide_results' => 'bool',
+                    'until_close'  => 'bool',
+                ]
+            ]);
+            $creator->setOptions([
+                'hide_results' => $pollInput['poll']['hide_results'],
+                'until_close'  => $pollInput['poll']['until_close']
+            ]);
         }
 
         return $creator;
@@ -62,18 +60,16 @@ class Poll extends XFCP_Poll
 
         if ($this->pollHideFormPresent($content))
         {
-            $pollInput = $this->filter(
-                [
-                    'poll' => [
-                        'hide_results' => 'bool',
-                        'until_close'  => 'bool',
-                    ]
-                ]);
-            $editor->setOptions(
-                [
-                    'hide_results' => $pollInput['poll']['hide_results'],
-                    'until_close'  => $pollInput['poll']['until_close']
-                ]);
+            $pollInput = $this->filter([
+                'poll' => [
+                    'hide_results' => 'bool',
+                    'until_close'  => 'bool',
+                ]
+            ]);
+            $editor->setOptions([
+                'hide_results' => $pollInput['poll']['hide_results'],
+                'until_close'  => $pollInput['poll']['until_close']
+            ]);
         }
 
         return $editor;
@@ -81,16 +77,15 @@ class Poll extends XFCP_Poll
 
     /**
      * @param Entity $content
-     * @return array|null
+     * @return bool
      */
     protected function pollHideFormPresent(Entity $content)
     {
-        if ($content instanceof Thread &&
-            $content->canHidePollResults())
+        if ($content instanceof Thread && $content->canHidePollResults())
         {
-            return $this->filter(['poll' => ['hide_poll_results_form' => 'uint']])['poll']['hide_poll_results_form'];
+            return $this->filter('poll.hide_poll_results_form', 'bool', false);
         }
 
-        return null;
+        return false;
     }
 }

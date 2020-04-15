@@ -1,12 +1,12 @@
 <div class="block-row block-row--minor">
 	<xf:if is="{$poll.close_date} AND {$poll.until_close}">
 		<p>{{ phrase(
-				'the_results_of_this_poll_are_hidden_until_x', {
+				'svHidePoll_poll_results_hidden_until_x', {
 					'time':date($poll.close_date)
 				})
 			}}
 		</p>
 	<xf:else />
-		<p>{{ phrase('the_results_of_this_poll_are_hidden_until_manual') }}</p>
+		<p>{{ phrase('svHidePoll_poll_results_hidden_until_manual_action') }}</p>
 	</xf:if>
 </div>

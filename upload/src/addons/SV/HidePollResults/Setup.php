@@ -32,6 +32,17 @@ class Setup extends AbstractSetup
         $this->installStep1();
     }
 
+    public function upgrade2010000Step1()
+    {
+        $this->renamePhrases([
+            'the_results_of_this_poll_are_hidden_until_manual' => 'svHidePoll_poll_results_hidden_until_manual_action',
+            'the_results_of_this_poll_are_hidden_until_x' => 'svHidePoll_poll_results_hidden_until_x',
+            'hide_poll_results' => 'svHidePoll_hide_poll_results',
+            'hide_until_close' => 'svHidePoll_hide_until_close',
+            'results_will_be_hidden_until_poll_closes_explain' => 'svHidePoll_hide_until_close_explain',
+        ]);
+    }
+
     public function uninstallStep1()
     {
         $this->schemaManager()->alterTable('xf_poll', function (Alter $table) {
