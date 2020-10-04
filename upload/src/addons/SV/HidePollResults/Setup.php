@@ -2,7 +2,7 @@
 
 namespace SV\HidePollResults;
 
-use SV\Utils\InstallerHelper;
+use SV\StandardLib\InstallerHelper;
 use XF\AddOn\AbstractSetup;
 use XF\AddOn\StepRunnerInstallTrait;
 use XF\AddOn\StepRunnerUninstallTrait;
@@ -11,7 +11,6 @@ use XF\Db\Schema\Alter;
 
 class Setup extends AbstractSetup
 {
-    // from https://github.com/Xon/XenForo2-Utils cloned to src/addons/SV/Utils
     use InstallerHelper;
     use StepRunnerInstallTrait;
     use StepRunnerUpgradeTrait;
@@ -103,7 +102,7 @@ class Setup extends AbstractSetup
         $tables = [];
 
         $tables['xf_poll'] = function (Alter $table) {
-            $table->dropColumns(['\'hide_results\', \'until_close\'']);
+            $table->dropColumns(['hide_results', 'until_close']);
         };
 
         return $tables;
