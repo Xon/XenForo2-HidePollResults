@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Helper\\Poll",
+    "to_class": "SV\\HidePollResults\\XF\\Helper\\Poll",
+    "execute_order": 10,
+    "active": true
+}
