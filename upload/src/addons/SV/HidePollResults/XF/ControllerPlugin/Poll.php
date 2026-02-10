@@ -81,16 +81,4 @@ class Poll extends XFCP_Poll
 
         return $editor;
     }
-
-    /**
-     * @deprecated Since 2.2.1
-     *
-     * @param Entity $content
-     *
-     * @return bool
-     */
-    protected function pollHideFormPresent(Entity $content)
-    {
-        return HidePollResultsUtil::pollHideFormPresent($content, $this->request);
-    }
 }
