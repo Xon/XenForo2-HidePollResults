@@ -8,6 +8,7 @@ use XF\AddOn\StepRunnerInstallTrait;
 use XF\AddOn\StepRunnerUninstallTrait;
 use XF\AddOn\StepRunnerUpgradeTrait;
 use XF\Db\Schema\Alter;
+use XF\Entity\Template;
 
 class Setup extends AbstractSetup
 {
@@ -16,7 +17,7 @@ class Setup extends AbstractSetup
     use StepRunnerUpgradeTrait;
     use StepRunnerUninstallTrait;
 
-    public function installStep1()
+    public function installStep1(): void
     {
         $sm = $this->schemaManager();
 
@@ -29,22 +30,22 @@ class Setup extends AbstractSetup
         }
     }
 
-    public function installStep2()
+    public function installStep2(): void
     {
         \XF::app()->simpleCache()->setValue($this->addOn->getAddOnId(), 'HidePollResults', false);
     }
 
-    public function upgrade2010000Step1()
+    public function upgrade2010000Step1(): void
     {
         $this->installStep1();
     }
 
-    public function upgrade2010000Step2()
+    public function upgrade2010000Step2(): void
     {
         $this->installStep2();
     }
 
-    public function upgrade2010000Step3()
+    public function upgrade2010000Step3(): void
     {
         $this->renamePhrases([
             'the_results_of_this_poll_are_hidden_until_manual' => 'svHidePoll_poll_results_hidden_until_manual_action',
@@ -55,9 +56,9 @@ class Setup extends AbstractSetup
         ]);
     }
 
-    public function upgrade2010000Step4()
+    public function upgrade2010000Step4(): void
     {
-        /** @var \XF\Entity\Template $template */
+        /** @var Template $template */
         $template = \XF::finder('XF:Template')
                        ->where('title', 'thread_view_hidden_poll_results')
                        ->where('style_id', 0)
@@ -69,7 +70,7 @@ class Setup extends AbstractSetup
         }
     }
 
-    public function uninstallStep1()
+    public function uninstallStep1(): void
     {
         $sm = $this->schemaManager();
 
@@ -82,14 +83,11 @@ class Setup extends AbstractSetup
         }
     }
 
-    /**
-     * @return array
-     */
-    protected function getAlterTables()
+    protected function getAlterTables(): array
     {
         $tables = [];
 
-        $tables['xf_poll'] = function (Alter $table) {
+        $tables['xf_poll'] = function (Alter $table): void {
             $this->addOrChangeColumn($table, 'hide_results')->type('tinyint')->length(1)->setDefault(0);
             $this->addOrChangeColumn($table, 'until_close')->type('tinyint')->length(1)->setDefault(0);
         };
@@ -97,11 +95,11 @@ class Setup extends AbstractSetup
         return $tables;
     }
 
-    protected function getRemoveAlterTables()
+    protected function getRemoveAlterTables(): array
     {
         $tables = [];
 
-        $tables['xf_poll'] = function (Alter $table) {
+        $tables['xf_poll'] = function (Alter $table): void {
             $table->dropColumns(['hide_results', 'until_close']);
         };
 

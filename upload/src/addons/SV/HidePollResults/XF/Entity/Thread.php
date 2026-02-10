@@ -3,17 +3,12 @@
 namespace SV\HidePollResults\XF\Entity;
 
 /**
- * Extends \XF\Entity\Thread
+ * @extends \XF\Entity\Thread
  */
 class Thread extends XFCP_Thread
 {
-    /**
-     * @return bool
-     */
-    public function canHidePollResults()
+    public function canHidePollResults(): bool
     {
-        $visitor = \XF::visitor();
-
-        return $visitor->hasNodePermission($this->node_id, 'hidePollResults');
+        return \XF::visitor()->hasNodePermission($this->node_id, 'hidePollResults');
     }
 }

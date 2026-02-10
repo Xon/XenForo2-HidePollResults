@@ -6,20 +6,19 @@ use SV\HidePollResults\XF\Entity\Thread as ExtendedThreadEntity;
 use XF\Http\Request as HttpRequest;
 use XF\Mvc\Entity\Entity;
 use XF\Service\AbstractService;
-use XF\Service\Poll\Editor as PollEditorSvc;
 use XF\Service\Poll\Creator as PollCreatorSvc;
+use XF\Service\Poll\Editor as PollEditorSvc;
 
 /**
- * This is better suited as a helper but because helpers were introduced in XF 2.2 and we want to maintain compatibility
+ * This is better suited as a helper but because helpers were introduced in XF 2.2, and we want to maintain compatibility
  * for XenForo 2.1 we will stick to Util for now.
- *
  * But this also brings another issue of not being to extend util classes.
  *
  * @since 2.2.1
  */
 class HidePollResults
 {
-    public static function pollHideFormPresent(Entity $content, HttpRequest $request) : bool
+    public static function pollHideFormPresent(Entity $content, HttpRequest $request): bool
     {
         if (!$content instanceof ExtendedThreadEntity || !$content->canHidePollResults())
         {
@@ -31,7 +30,7 @@ class HidePollResults
 
     /**
      * @param AbstractService|PollCreatorSvc|PollEditorSvc $pollManagerSvc
-     * @param HttpRequest|null $request
+     * @param HttpRequest|null                             $request
      */
     public static function setupPollManagerSvc(AbstractService $pollManagerSvc, HttpRequest $request)
     {
@@ -44,11 +43,11 @@ class HidePollResults
             'poll' => [
                 'hide_results' => 'bool',
                 'until_close'  => 'bool',
-            ]
+            ],
         ]);
         $pollManagerSvc->setOptions([
             'hide_results' => $pollInput['poll']['hide_results'],
-            'until_close'  => $pollInput['poll']['until_close']
+            'until_close'  => $pollInput['poll']['until_close'],
         ]);
     }
 }

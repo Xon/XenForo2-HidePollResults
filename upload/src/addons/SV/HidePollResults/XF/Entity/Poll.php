@@ -1,15 +1,18 @@
 <?php
+/**
+ * @noinspection PhpMissingReturnTypeInspection
+ */
 
 namespace SV\HidePollResults\XF\Entity;
 
 use XF\Mvc\Entity\Structure;
 
 /**
- * Extends \XF\Entity\Poll
- *
+ * @extends \XF\Entity\Poll
  * COLUMNS
- * @property bool hide_results
- * @property bool until_close
+ *
+ * @property bool $hide_results
+ * @property bool $until_close
  */
 class Poll extends XFCP_Poll
 {
@@ -40,7 +43,7 @@ class Poll extends XFCP_Poll
         }
 
         $userId = $thread->user_id;
-        if ($userId && $userId === $visitor->user_id &&
+        if ($userId !== 0 && $userId === $visitor->user_id &&
             $visitor->hasNodePermission($nodeId, 'bypassHiddenPollResultOwn'))
         {
             return true;

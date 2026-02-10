@@ -7,6 +7,7 @@ use XF\Service\Poll\Creator as PollCreatorSvc;
 
 /**
  * @since 2.2.1
+ * @extends \XF\Helper\Poll
  */
 class Poll extends XFCP_Poll
 {
@@ -14,9 +15,9 @@ class Poll extends XFCP_Poll
      * We are directly extending this and not getPollInput() because XF does not pass $content to this method (WHY???).
      *
      * @param PollCreatorSvc $creator
-     * @param array $pollInput
-     *
+     * @param array          $pollInput
      * @return PollCreatorSvc
+     * @noinspection PhpMissingReturnTypeInspection
      */
     public function configureCreatorFromInput(PollCreatorSvc $creator, array $pollInput)
     {
