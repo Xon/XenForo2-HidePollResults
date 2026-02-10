@@ -2,17 +2,26 @@
     "legacy_addon_id": "HidePollResults",
     "title": "Hide Poll Results",
     "description": "Forum user-group based permissions to allow poll contents to be hidden",
-    "version_id": 2020170,
-    "version_string": "2.2.1",
-    "dev" : "Xon",
+    "version_id": 2030000,
+    "version_string": "2.3.0",
+    "dev" : "Atelier Aphelion",
     "dev_url": "https://atelieraphelion.com/",
     "faq_url": "",
     "support_url": "https://xenforo.com/community/resources/hide-poll-results.6241/",
     "extra_urls": [],
     "require": {
-        "XF": [2010070, "XenForo 2.1.0+"],
-        "php": ["7.0.0", "PHP 7.0.0+"],
-        "SV/StandardLib": [1000000,"Standard Library by Xon v1.0.0+"]
+        "SV/StandardLib": [
+            2001220000,
+            "Standard Library by Xon v1.22.0+"
+        ],
+        "XF": [
+            "2.1.0",
+            "XenForo 2.1.0+"
+        ],
+        "php": [
+            "7.2.0",
+            "PHP 7.2.0+"
+        ]
     },
     "icon": "fa-eye-slash"
 }
