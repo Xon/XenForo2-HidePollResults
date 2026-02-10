@@ -25,7 +25,7 @@ class HidePollResults
      *
      * @return bool
      */
-    public static function pollHideFormPresent(Entity $content, HttpRequest $request = null) : bool
+    public static function pollHideFormPresent(Entity $content, ?HttpRequest $request = null) : bool
     {
         if (!$content instanceof ExtendedThreadEntity || !$content->canHidePollResults())
         {
@@ -41,7 +41,7 @@ class HidePollResults
      * @param AbstractService|PollCreatorSvc|PollEditorSvc $pollManagerSvc
      * @param HttpRequest|null $request
      */
-    public static function setupPollManagerSvc(AbstractService $pollManagerSvc, HttpRequest $request = null)
+    public static function setupPollManagerSvc(AbstractService $pollManagerSvc, ?HttpRequest $request = null)
     {
         if (!static::pollHideFormPresent($pollManagerSvc->getContent(), $request))
         {
