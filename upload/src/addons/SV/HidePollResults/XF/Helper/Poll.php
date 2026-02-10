@@ -22,7 +22,7 @@ class Poll extends XFCP_Poll
     {
         $pollCreatorSvc = parent::configureCreatorFromInput($creator, $pollInput);
 
-        HidePollResultsUtil::setupPollManagerSvc($pollCreatorSvc);
+        HidePollResultsUtil::setupPollManagerSvc($pollCreatorSvc, \XF::app()->request());
 
         return $pollCreatorSvc;
     }

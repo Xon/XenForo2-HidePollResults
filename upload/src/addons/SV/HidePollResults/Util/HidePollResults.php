@@ -19,20 +19,12 @@ use XF\Service\Poll\Creator as PollCreatorSvc;
  */
 class HidePollResults
 {
-    /**
-     * @param Entity $content
-     * @param HttpRequest|null $request
-     *
-     * @return bool
-     */
-    public static function pollHideFormPresent(Entity $content, ?HttpRequest $request = null) : bool
+    public static function pollHideFormPresent(Entity $content, HttpRequest $request) : bool
     {
         if (!$content instanceof ExtendedThreadEntity || !$content->canHidePollResults())
         {
             return false;
         }
-
-        $request = $request ?: \XF::app()->request();
 
         return $request->filter('poll.hide_poll_results_form', 'bool', false);
     }
@@ -41,14 +33,12 @@ class HidePollResults
      * @param AbstractService|PollCreatorSvc|PollEditorSvc $pollManagerSvc
      * @param HttpRequest|null $request
      */
-    public static function setupPollManagerSvc(AbstractService $pollManagerSvc, ?HttpRequest $request = null)
+    public static function setupPollManagerSvc(AbstractService $pollManagerSvc, HttpRequest $request)
     {
         if (!static::pollHideFormPresent($pollManagerSvc->getContent(), $request))
         {
             return;
         }
-
-        $request = $request ?: \XF::app()->request();
 
         $pollInput = $request->filter([
             'poll' => [
