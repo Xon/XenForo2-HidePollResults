@@ -71,10 +71,9 @@ class Poll extends XFCP_Poll
      * @param string          $contentType
      * @param Entity          $content
      * @param AbstractHandler $handler
-     *
      * @return \XF\Service\Poll\Editor
      */
-    public function setupPollEdit(\XF\Entity\Poll $poll, $contentType, Entity $content, AbstractHandler $handler)
+    protected function setupPollEdit(\XF\Entity\Poll $poll, $contentType, Entity $content, AbstractHandler $handler)
     {
         $editor = parent::setupPollEdit($poll, $contentType, $content, $handler);
 
