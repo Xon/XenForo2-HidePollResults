@@ -8,7 +8,10 @@
     "dev_url": "https://atelieraphelion.com/",
     "faq_url": "",
     "support_url": "https://xenforo.com/community/resources/hide-poll-results.6241/",
-    "extra_urls": [],
+    "extra_urls": {
+        "License": "https://atelieraphelion.com/products/hide-poll-results.284/copyright",
+        "Add-on site": "https://atelieraphelion.com/products/hide-poll-results.284/"
+    },
     "require": {
         "SV/StandardLib": [
             2001220000,
