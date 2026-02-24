@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "preg_replace",
     "find": "/(<xf:if is=\"!\\$canViewResults\">\\s*<hr class=\"block-separator\"\\s*\\/>)(.*?)(\\s*<xf:elseif)/s",
-    "replace": "$1\n<xf:if is=\"$poll.hide_results\">\n\t<xf:include template=\"svHidePoll_poll_macros_hide_results\" />\n<xf:else/>\n$2\n</xf:if>\n$3"
+    "replace": "$1\n<xf:if is=\"$poll.isValidColumn('hide_results') && $poll.hide_results\">\n\t<xf:include template=\"svHidePoll_poll_macros_hide_results\" />\n<xf:else/>\n$2\n</xf:if>\n$3"
 }
